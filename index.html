@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://bibles.org/pages/highlighter/demo -->
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Highlighter Demo</title>
+<!-- <link rel="stylesheet" href="https://bibles.org/linker/css/demo.css"> -->
+
+
+<!-- <script id="bw-highlighter-src" async="" src=""></script> -->
+
+<script src="jquery.min.js"></script>
+
+<script>
+
+
+function getRef(){
+	    var xmlHttp = null;
+	    xmlHttp = new XMLHttpRequest();
+	    var location="40.720032,-73.988354";
+	    var pitch=0;
+	    pitch=(document.getElementById('pitchInput').value);
+	   	location=(document.getElementById('locationInput').value);
+	    location=location.replace(/ /g,'');
+	    location=encodeURI(location)
+	    console.log(location)
+	    xmlHttp.open( "GET", 'gen.php?pitch='+pitch+'&location='+location, false );
+	    xmlHttp.send( null );
+	    document.getElementById('image').innerHTML+=xmlHttp.responseText;
+}
+
+</script>
+
+</head>
+<body>
+Location: <input type="text" id="locationInput" value="location here" />
+<br/>
+Pitch:
+<input type="text" id="pitchInput" value="0" />
+<input type="button" value="submit" onclick="getRef()" />
+<div id="image">
+
+</div>
+</body></html>
